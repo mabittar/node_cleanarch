@@ -1,19 +1,25 @@
-// eslint-disable-next-line no-undef
-module.exports = {
-  roots: ['<rootDir>/tests'],
-  collectCoverageFrom: [
-    '<rootDir>/src/**/*.ts',
-    '!<rootDir>/src/main/**'
-  ],
-  coverageDirectory: 'coverage',
-  coverageProvider: 'babel',
-  testEnvironment: 'node',
-  preset: '@shelf/jest-mongodb',
+/**
+ * For a detailed explanation regarding each configuration property, visit:
+ * https://jestjs.io/docs/configuration
+ */
+
+import type {Config} from 'jest';
+
+const config: Config = {
+  collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
+  coverageDirectory: "coverage",
+
+  // An array of regexp pattern strings used to skip coverage collection
+  // coveragePathIgnorePatterns: [
+  //   "/node_modules/"
+  // ],
+
+  // Indicates which provider should be used to instrument code for coverage
+  coverageProvider: "v8",
+  testEnvironment: "node",
   transform: {
     '.+\\.ts$': 'ts-jest'
-  },
-  moduleNameMapper: {
-    '@/tests/(.*)': '<rootDir>/tests/$1',
-    '@/(.*)': '<rootDir>/src/$1'
   }
 }
+
+export default config;
